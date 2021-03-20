@@ -8,3 +8,7 @@ cargo --version
 ```
 
 # Create a new Rust project
+```
+# since projects can't start with a digit
+cargo new --name "nbhr_kickoff" 01_kickoff
+```

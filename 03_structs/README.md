@@ -1,6 +1,7 @@
 # What to learn
 * to enable the mine to hold different mineral types, structs are included
-* enums are used
+* enums and structs are used
+* Option enum
 
 # Usage
 ```bash

@@ -1,7 +1,6 @@
 # What to learn
-* to enable the mine to hold different mineral types, structs are included
-* enums and structs are used
-* Option enum
+* reads the mine size from stdin
+* use vectors
 
 # Usage
 ```bash

@@ -4,6 +4,7 @@ Mine simulator .. the mine is represented by an array
 */
 
 use rand::{thread_rng, Rng};
+use std::io;
 
 enum MineralType {
     MITHRIL,
@@ -50,12 +51,24 @@ fn init_mine_with_gold(mine: &mut Vec<Option<MineSpot>>, mine_size: usize) {
 }
     
 fn main() {
-    const MINE_SIZE :usize = 10;
-
+    let mut mine_size_str = String::new();
+    let mut mine_size: usize;
+    loop {
+        println!("Please enter the mine size. Choose a number between 1 and 20");
+        io::stdin()
+            .read_line(&mut mine_size_str)
+            .expect("Failed to read line");
+        mine_size = mine_size_str.trim().parse().expect("Please type a number between 1 and 20!");
+        if (mine_size > 0) && (mine_size < 21) {
+            break;
+        }
+    
+    }
+   
     // this init sucks
     let mut mine: Vec<Option<MineSpot>> = Vec::new();
 
-    init_mine_with_gold(&mut mine, MINE_SIZE);
+    init_mine_with_gold(&mut mine, mine_size);
 
     let mut output: String = "Mine [".to_owned();
 

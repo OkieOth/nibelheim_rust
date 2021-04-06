@@ -34,20 +34,7 @@ fn main() {
     let last_index = mine.len() -1; 
     for index in 0..mine.len() {
         let opt: Option<&modules::mine::MineSpot> = mine[index].as_ref();
-        if opt.is_some() {
-            let spot = opt.unwrap();
-            match spot.mineral {
-                modules::mine::MineralType::MITHRIL => output.push_str("M"), 
-                modules::mine::MineralType::GOLD => output.push_str("G"),
-                modules::mine::MineralType::SILVER => output.push_str("S"),
-                modules::mine::MineralType::DIAMOND => output.push_str("D"),
-                modules::mine::MineralType::IRON => output.push_str("I"),
-                modules::mine::MineralType::CUPPER => output.push_str("C"),            
-                modules::mine::MineralType::ROCK => output.push_str("_")            
-            }
-        } else {
-            output.push_str(" ");
-        }
+        output.push_str(modules::mine::print(opt));
 
         if index < last_index {
             output.push_str(", ");

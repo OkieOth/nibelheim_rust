@@ -14,11 +14,29 @@ pub struct MineSpot {
     pub mineral: MineralType
 }
 
+pub fn print(mine_spot: Option<&MineSpot>) -> &str {
+    if mine_spot.is_some() {
+        let spot = mine_spot.unwrap();
+        match spot.mineral {
+            MineralType::MITHRIL => "M", 
+            MineralType::GOLD => "G",
+            MineralType::SILVER => "S",
+            MineralType::DIAMOND => "D",
+            MineralType::IRON => "I",
+            MineralType::CUPPER => "C",            
+            MineralType::ROCK => "."
+        }
+    } else {
+        return " ";
+    }
+
+}
+
 pub fn init_gold_and_stuff() -> Option<MineSpot> {
     if thread_rng().gen_range(0..2) == 1 {
         // this spot has minerals
         let spot: MineSpot = MineSpot {
-            mineral: match thread_rng().gen_range(0..5) {
+            mineral: match thread_rng().gen_range(0..7) {
                 0 => MineralType::MITHRIL,
                 1 => MineralType::GOLD,
                 2 => MineralType::SILVER,

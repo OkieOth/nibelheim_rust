@@ -1,5 +1,8 @@
 use rand::{thread_rng, Rng};
 
+/*
+Type of minerals that can be found in the mine
+*/
 pub enum MineralType {
     MITHRIL,
     GOLD,
@@ -10,10 +13,16 @@ pub enum MineralType {
     ROCK
 }
 
+/*
+A cell of the mine. The mine is built of a number of MineSpots
+*/
 pub struct MineSpot {
     pub mineral: MineralType
 }
 
+/*
+Useful for debug output
+ */
 pub fn print(mine_spot: Option<&MineSpot>) -> &str {
     if mine_spot.is_some() {
         let spot = mine_spot.unwrap();
@@ -32,6 +41,9 @@ pub fn print(mine_spot: Option<&MineSpot>) -> &str {
 
 }
 
+/*
+Create a random MineSpot
+*/
 pub fn init_gold_and_stuff() -> Option<MineSpot> {
     if thread_rng().gen_range(0..2) == 1 {
         // this spot has minerals

@@ -41,7 +41,10 @@ fn main() {
         }
     }
     output.push_str("]");
-    println!("{}", output)
+    println!("{}", output);
+
+    let dwarf = modules::dwarf::Dwarf::new();
+    dwarf.debug_print();
 }
 
 #[cfg(test)]

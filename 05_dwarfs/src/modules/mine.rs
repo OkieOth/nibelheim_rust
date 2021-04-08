@@ -72,3 +72,19 @@ pub fn init_mine_with_gold(mine: &mut Vec<Option<MineSpot>>, mine_size: usize) {
         mine.push(spot);
     }
 }    
+
+pub fn debug_print(mine: &Vec<Option<MineSpot>>) {
+    let mut output: String = "Mine [".to_owned();
+
+    let last_index = mine.len() -1; 
+    for index in 0..mine.len() {
+        let opt: Option<&MineSpot> = mine[index].as_ref();
+        output.push_str(print(opt));
+
+        if index < last_index {
+            output.push_str(", ");
+        }
+    }
+    output.push_str("]");
+    println!("{}", output);
+}

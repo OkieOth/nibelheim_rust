@@ -28,22 +28,13 @@ fn main() {
     let mut mine: Vec<Option<modules::mine::MineSpot>> = Vec::new();
 
     modules::mine::init_mine_with_gold(&mut mine, mine_size);
-
-    let mut output: String = "Mine [".to_owned();
-
-    let last_index = mine.len() -1; 
-    for index in 0..mine.len() {
-        let opt: Option<&modules::mine::MineSpot> = mine[index].as_ref();
-        output.push_str(modules::mine::print(opt));
-
-        if index < last_index {
-            output.push_str(", ");
-        }
-    }
-    output.push_str("]");
-    println!("{}", output);
+    modules::mine::debug_print(&mine);
 
     let dwarf = modules::dwarf::Dwarf::new();
+    for index in 0 .. mine.len() {
+        let mineSpot: Option<&modules::mine::MineSpot> = mine[index].as_ref();
+        dwarf.visit_mine_spot(mineSpot)
+    }
     dwarf.debug_print();
 }
 

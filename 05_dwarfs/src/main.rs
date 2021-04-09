@@ -30,10 +30,10 @@ fn main() {
     modules::mine::init_mine_with_gold(&mut mine, mine_size);
     modules::mine::debug_print(&mine);
 
-    let dwarf = modules::dwarf::Dwarf::new();
+    let mut dwarf = modules::dwarf::Dwarf::new();
     for index in 0 .. mine.len() {
-        let mineSpot: Option<&modules::mine::MineSpot> = mine[index].as_ref();
-        dwarf.visit_mine_spot(mineSpot)
+        let mine_spot: Option<&modules::mine::MineSpot> = mine[index].as_ref();
+        dwarf.visit_mine_spot(mine_spot)
     }
     dwarf.debug_print();
 }

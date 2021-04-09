@@ -7,7 +7,7 @@ pub const GOLD: u8 = 2;
 pub const SILVER: u8 = 3;
 pub const DIAMOND: u8 = 4;
 pub const IRON: u8 = 5;
-pub const CUPPER: u8 = 5;
+pub const CUPPER: u8 = 6;
 
 
 pub struct Dwarf {
@@ -32,26 +32,42 @@ impl Dwarf {
         }
     }
 
+    fn mineral_number_to_text(&self, mineral: &u8) -> String {
+        match *mineral {
+            MITHRIL => "Mithril".to_owned(), 
+            GOLD => "Gold".to_owned(),
+            SILVER => "Silver".to_owned(),
+            DIAMOND => "Diamonds".to_owned(),
+            IRON => "Iron".to_owned(),
+            CUPPER => "Cupper".to_owned(),
+            _ => "???".to_owned()
+        }
+    }
+
     pub fn debug_print(&self) {
-        println!("I am a dwarf");
+        println!("I am a dwarf, and my pocket contains ...");
+        for (k,v) in self.pocket.iter() {
+            println!("    {}: {}", self.mineral_number_to_text(k), v);
+        }
     }
 
     pub fn do_nothing(&self) {
     }
 
-    fn set_mineral(&self, mineral: u8, value: usize) {
+    fn set_mineral(&mut self, mineral: u8, value: usize) {
+        self.pocket.insert(mineral,value);
     }
 
-    pub fn increment_pocket(&self, mineral: u8) {
+    pub fn increment_pocket(&mut self, mineral: u8) {
         match self.pocket.get(&mineral) {
             Some(&value) => self.set_mineral(mineral,value + 1),
             _ => self.do_nothing()
         }        
     }
 
-    pub fn visit_mine_spot(&self, mineSpot: Option<&mine::MineSpot>) {
-        if mineSpot.is_some() {
-            let spot = mineSpot.unwrap();
+    pub fn visit_mine_spot(&mut self, mine_spot: Option<&mine::MineSpot>) {
+        if mine_spot.is_some() {
+            let spot = mine_spot.unwrap();
             match spot.mineral {
                 mine::MineralType::MITHRIL => self.increment_pocket(MITHRIL), 
                 mine::MineralType::GOLD => self.increment_pocket(GOLD),

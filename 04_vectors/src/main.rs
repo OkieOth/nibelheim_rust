@@ -58,7 +58,7 @@ fn main() {
         io::stdin()
             .read_line(&mut mine_size_str)
             .expect("Failed to read line");
-        mine_size = mine_size_str.trim().parse().expect("Please type a number between 1 and 20!");
+        mine_size = mine_size_str.trim().parse().expect ("Please type a number between 1 and 20!");
         if (mine_size > 0) && (mine_size < 21) {
             break;
         }

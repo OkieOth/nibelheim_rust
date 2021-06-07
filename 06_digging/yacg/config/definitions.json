@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Create basic Rust types",
+      "models": [
+        {
+          "schema": "/modelDir/nibelheim.json"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Plantuml",
+          "singleFileTask": {
+            "template": "/templateDir/rust.mako",
+            "destFile": "/outputDir/niebelheim.rs"
+          }
+        }
+      ]
+    }
+  ]
+  

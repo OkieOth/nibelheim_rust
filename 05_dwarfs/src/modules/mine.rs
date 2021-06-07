@@ -10,7 +10,7 @@ pub enum MineralType {
     DIAMOND,
     IRON,
     CUPPER,
-    ROCK
+    ROCK,
 }
 
 /*
